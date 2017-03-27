@@ -1,4 +1,4 @@
-### Behaviour driven development task implementation.
+### Behaviour driven development task.
 
 Done with cucumber.
 
