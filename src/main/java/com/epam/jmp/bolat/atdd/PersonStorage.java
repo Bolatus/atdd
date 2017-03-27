@@ -18,10 +18,14 @@ public class PersonStorage {
 
     private List<Person> people;
 
-    private AtomicLong idCounter = new AtomicLong(0L);
+    private AtomicLong idCounter = new AtomicLong(10L);
 
     public PersonStorage() {
+
         this.people = new ArrayList<Person>();
+        this.people.add(new Person(1L,"Max"));
+        this.people.add(new Person(2L,"John"));
+
     }
 
     public Long addPerson(Person p){
