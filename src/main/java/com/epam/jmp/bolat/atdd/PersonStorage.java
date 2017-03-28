@@ -23,12 +23,12 @@ public class PersonStorage {
     public PersonStorage() {
 
         this.people = new ArrayList<Person>();
-        this.people.add(new Person(1L,"Max"));
-        this.people.add(new Person(2L,"John"));
+        this.people.add(new Person(1L, "Max"));
+        this.people.add(new Person(2L, "John"));
 
     }
 
-    public Long addPerson(Person p){
+    public Long addPerson(Person p) {
         p.setId(idCounter.incrementAndGet());
         people.add(p);
         return idCounter.get();
@@ -40,20 +40,20 @@ public class PersonStorage {
 
     public Person getPersonById(Long personId) throws Exception {
         Person person = null;
-        for (Person p : people){
-            if (p.getId()==personId){
+        for (Person p : people) {
+            if (p.getId() == personId) {
                 person = p;
                 break;
             }
         }
-        if (person==null)
+        if (person == null)
             throw new Exception();
         return person;
     }
 
     public void deletePerson(Long personId) throws Exception {
         Person person = getPersonById(personId);
-        if (person==null)
+        if (person == null)
             throw new Exception();
         else
             people.remove(person);
@@ -61,9 +61,9 @@ public class PersonStorage {
 
     public void updatePerson(Long personId, Person personData) throws Exception {
         Person person = getPersonById(personId);
-        if (person==null)
+        if (person == null)
             throw new Exception();
-        else{
+        else {
             person.setName(personData.getName());
         }
     }

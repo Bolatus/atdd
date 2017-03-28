@@ -22,35 +22,35 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/person/{personId}", method = RequestMethod.GET)
-    public ResponseEntity<Person> getPerson(@PathVariable(value="personId") Long personId) {
+    public ResponseEntity<Person> getPerson(@PathVariable(value = "personId") Long personId) {
         try {
             return ResponseEntity.ok(personStorage.getPersonById(personId));
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
 
     @RequestMapping(value = "/person", method = RequestMethod.POST)
-    public Long addPerson(@RequestBody(required = true) Person person){
+    public Long addPerson(@RequestBody(required = true) Person person) {
         return personStorage.addPerson(person);
     }
 
     @RequestMapping(value = "/person/{personId}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deletePerson(@PathVariable(value="personId") Long personId) {
+    public ResponseEntity<String> deletePerson(@PathVariable(value = "personId") Long personId) {
         try {
             personStorage.deletePerson(personId);
             return ResponseEntity.ok().build();
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
 
     @RequestMapping(value = "/person/{personId}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updatePerson(@PathVariable(value="personId") Long personId,@RequestBody Person personData) {
+    public ResponseEntity<String> updatePerson(@PathVariable(value = "personId") Long personId, @RequestBody Person personData) {
         try {
-            personStorage.updatePerson(personId,personData);
+            personStorage.updatePerson(personId, personData);
             return ResponseEntity.ok().build();
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
