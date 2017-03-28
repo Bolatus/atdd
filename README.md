@@ -1,6 +1,6 @@
 ### Behaviour driven development task.
 
-Done with cucumber.
+Implemented using cucumber.
 
 Only endpoints are covered.
 
