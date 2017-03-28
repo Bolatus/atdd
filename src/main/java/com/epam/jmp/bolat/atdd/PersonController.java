@@ -16,7 +16,6 @@ public class PersonController {
     @Autowired
     private PersonStorage personStorage;
 
-
     @RequestMapping(value = "/person", method = RequestMethod.GET)
     public List<Person> getPeople() {
         return personStorage.getPeople();
@@ -29,11 +28,10 @@ public class PersonController {
         } catch (Exception e){
             return ResponseEntity.notFound().build();
         }
-
     }
 
     @RequestMapping(value = "/person", method = RequestMethod.POST)
-    public Long addPerson(@RequestBody Person person){
+    public Long addPerson(@RequestBody(required = true) Person person){
         return personStorage.addPerson(person);
     }
 

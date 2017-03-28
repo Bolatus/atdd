@@ -62,7 +62,7 @@ public class WebStepDefs {
 
     //Testing fetch all people
     @When("^the client submits GET request at /person$")
-    public void the_client_submits_GET_request_person() throws Throwable{
+    public void the_client_submits_GET_request_people() throws Throwable{
         Assert.notNull(webApplicationContext);
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
         this.resultActions = mockMvc.perform(get("/person"));
@@ -70,11 +70,21 @@ public class WebStepDefs {
 
     @Then("^after GET request the client receives status code of (\\d+)$")
     public void after_get_request_the_client_receives_status_code_of(int statusCode) throws Throwable {
-        resultActions.andExpect(status().isOk());
+        resultActions.andExpect(status().is(statusCode));
     }
 
-    @And("^the client receives arraylist json (.+)$")
-    public void the_client_receives_arraylist_json(String json) throws Throwable {
+    @And("^the client receives json (.+)$")
+    public void the_client_receives_json(String json) throws Throwable {
         resultActions.andExpect(content().string(json));
     }
+
+    //Testing fetch single person
+    @When("^the client submits GET request at /person with id (\\d+)$")
+    public void the_client_submits_GET_request_person(Long id) throws Throwable{
+        Assert.notNull(webApplicationContext);
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        this.resultActions = mockMvc.perform(get("/person/"+id));
+    }
+
+
 }
